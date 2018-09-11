@@ -1,9 +1,19 @@
-.admin-categories {
+.admin-table {
   width: 100%;
   border: 1px solid gray;
   text-align: center;
 }
 
-.admin-categories tr, th, td {
+.admin-table tr, th, td {
   border: 1px solid gray;
+}
+
+.product-feature__title {
+  padding: 5px auto;
+  border: thin solid gray;
+  font-weight: bold;
+}
+
+.btn--color-white {
+  color: white;
 }

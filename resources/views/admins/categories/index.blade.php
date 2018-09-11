@@ -9,16 +9,18 @@
 @stop
 
 @section ('body.content')
-    <table class="admin-categories">
+    <table class="admin-table">
         <tr>
             <th>STT</th>
             <th>Name</th>
+            <th>Slug</th>
             <th colspan="3">Action</th>
         </tr>
         @foreach ($categories as $category)
             <tr>
                 <td> {{ $category->id }} </td>
-                <td> {{ $category->name }} </td>
+                <td><a href="{{ url('/admins/categories/' . $category->id) }}">{{ $category->name }}</a></td>
+                <td>{{ $category->slug }}</td>
                 <td><a href="{{ url('/admins/categories/' . $category->id . '/edit') }}"><i class="fa fa-edit"></i></a></td>
                 <td><a href="{{ url('/admins/categories/' . $category->id) }}"><i class="fa fa-eye"></i></a></td>
                 <td>

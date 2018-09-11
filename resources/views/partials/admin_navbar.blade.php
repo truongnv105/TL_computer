@@ -18,7 +18,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="{{ url('/admins/products') }}">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Products</span>
           </a>
@@ -39,7 +39,7 @@
               <a href="{{ url('admins/categories/create') }}"><i class="fa fa-plus"></i> Category</a>
             </li>
             <li>
-              <a href="cards.html"><i class="fa fa-plus"></i> Product</a>
+              <a href="{{ url('admins/products/create') }}""><i class="fa fa-plus"></i> Product</a>
             </li>
             <li>
               <a href="cards.html"><i class="fa fa-plus"></i> Comment</a>

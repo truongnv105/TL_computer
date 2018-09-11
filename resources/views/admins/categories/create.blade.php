@@ -28,6 +28,12 @@
         </div>
 
         <div class="form-group">
+            {!! Form::label('slug', 'Category\'s slug name:', array('class' => 'control-label')) !!}
+            {!! Form::text('slug', '', array('class' => 'form-control', 'required',
+                'placeholder' => 'Press category slug name...')) !!}
+        </div>
+
+        <div class="form-group">
             {!! Form::submit('Create', array('class' => 'btn btn-primary form-control')) !!}
         </div>
 
