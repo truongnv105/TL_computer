@@ -1,0 +1,9 @@
+.admin-categories {
+  width: 100%;
+  border: 1px solid gray;
+  text-align: center;
+}
+
+.admin-categories tr, th, td {
+  border: 1px solid gray;
+}
