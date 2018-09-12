@@ -11,10 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::prefix('admins')->group(function(){
     Route::get('/dashboards', 'admins\DashboardsController@index');
 
@@ -32,3 +28,7 @@ Route::prefix('admins')->group(function(){
     Route::get('/products/{id}/edit', 'admins\ProductsController@edit');
     Route::put('/products/{id}', 'admins\ProductsController@update');
 });
+
+Route::get('/', 'FrontendController@getHome');
+Route::get('details/{id}/{slug}.html', 'FrontendController@getDetails');
+Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
