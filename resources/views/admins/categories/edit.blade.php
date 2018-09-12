@@ -28,6 +28,11 @@
     </div>
 
     <div class="form-group">
+        {!! Form::label('slug', 'Category\' slug name:', array('class' => 'control-label')) !!}
+        {!! Form::text('slug', $category->slug, array('class' => 'form-control')) !!}
+    </div>
+
+    <div class="form-group">
         {!! Form::submit('Update', array('class' => 'btn btn-primary form-control')) !!}
     </div>
 

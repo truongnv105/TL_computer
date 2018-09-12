@@ -24,4 +24,11 @@ Route::prefix('admins')->group(function(){
     Route::get('/categories/{id}', 'admins\CategoriesController@show');
     Route::get('/categories/{id}/edit', 'admins\CategoriesController@edit');
     Route::put('/categories/{id}', 'admins\CategoriesController@update');
+
+    Route::get('/products', 'admins\ProductsController@index');
+    Route::get('/products/create', 'admins\ProductsController@create');
+    Route::post('/products', 'admins\ProductsController@store');
+    Route::get('/products/{id}', 'admins\ProductsController@show');
+    Route::get('/products/{id}/edit', 'admins\ProductsController@edit');
+    Route::put('/products/{id}', 'admins\ProductsController@update');
 });
