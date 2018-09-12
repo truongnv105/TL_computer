@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Http\Requests\CategoryFormRequest;
+use Illuminate\Support\Facades\Session;
 
 class CategoriesController extends Controller
 {
@@ -21,11 +22,12 @@ class CategoriesController extends Controller
 
     public function store(CategoryFormRequest $request){
         $category = new Category;
-
-        $category->name = $request->name;
-        $category->slug = $request->slug;
+        $this->get_infor_category($category, $request);
 
         if($category->save()){
+            Session::flash('message', 'Create success new category');
+            Session::flash('alert-class', 'alert-success');
+
             return redirect('/admins/categories');
         }
     }
@@ -37,6 +39,9 @@ class CategoriesController extends Controller
             $products = $category->products;
             return view('admins/categories/show')->with('data', ['category' => $category, 'products' => $products]);
         }else{
+            Session::flash('message', 'Category doesn\'t exist');
+            Session::flash('alert-class', 'alert-warning');
+
             return redirect('admins/categories');
         }
     }
@@ -47,6 +52,9 @@ class CategoriesController extends Controller
         if(!is_null($category)){
             return view('admins/categories/edit')->with('category', $category);
         }else{
+            Session::flash('message', 'Category doesn\'t exist');
+            Session::flash('alert-class', 'alert-warning');
+
             return redirect('admins/categories');
         }
     }
@@ -55,15 +63,25 @@ class CategoriesController extends Controller
         $category = Category::find($id);
 
         if(!is_null($category)){
-            $category->name = $request->name;
-            $category->slug = $request->slug;
-
+            $this->get_infor_category($category, $request);
 
             if($category->save()){
+                Session::flash('message', 'Update success category');
+                Session::flash('alert-class', 'alert-success');
                 return redirect('admins/categories');
             }
         }else{
+            Session::flash('message', 'Category doesn\'t exist');
+            Session::flash('alert-class', 'alert-warning');
+
             return redirect('admins/categories');
         }
+    }
+
+    private function get_infor_category(Category $category, CategoryFormRequest $request){
+        $category->name = $request->name;
+        $category->slug = str_slug($request->name);
+
+        return $category;
     }
 }

@@ -6,7 +6,7 @@
     <div class="collapse navbar-collapse" id="navbarResponsive">
       <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-          <a class="nav-link" href="index.html">
+          <a class="nav-link" href="{{ url('admins/dashboards') }}">
             <i class="fa fa-fw fa-dashboard"></i>
             <span class="nav-link-text">Dashboard</span>
           </a>
@@ -28,23 +28,6 @@
             <i class="fa fa-commenting"></i>
             <span class="nav-link-text">Comments</span>
           </a>
-        </li>
-        <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Components">
-          <a class="nav-link nav-link-collapse collapsed" data-toggle="collapse" href="#collapseComponents" data-parent="#exampleAccordion">
-            <i class="fa fa-plus"></i>
-            <span class="nav-link-text">Add New</span>
-          </a>
-          <ul class="sidenav-second-level collapse" id="collapseComponents">
-            <li>
-              <a href="{{ url('admins/categories/create') }}"><i class="fa fa-plus"></i> Category</a>
-            </li>
-            <li>
-              <a href="{{ url('admins/products/create') }}""><i class="fa fa-plus"></i> Product</a>
-            </li>
-            <li>
-              <a href="cards.html"><i class="fa fa-plus"></i> Comment</a>
-            </li>
-          </ul>
         </li>
       </ul>
       <ul class="navbar-nav sidenav-toggler">

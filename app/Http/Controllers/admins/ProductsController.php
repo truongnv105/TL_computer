@@ -7,13 +7,14 @@ use App\Http\Controllers\Controller;
 use App\Models\Product;
 use App\Models\Category;
 use App\Http\Requests\ProductFormRequest;
+use Illuminate\Support\Facades\Session;
 
 class ProductsController extends Controller
 {
     public function index(){
         $products = Product::all();
-
-        return view('/admins/products/index')->with('products', $products);
+        $categories = Category::pluck("name", "id");
+        return view('/admins/products/index')->with('products', $products)->with('categories', $categories);
     }
 
     public function create(){
@@ -28,6 +29,9 @@ class ProductsController extends Controller
 
         if($product->save()){
             $request->file('image')->storeAs('image', $request->file('image')->getClientOriginalName());
+            Session::flash('message', 'Create success new product');
+            Session::flash('alert-class', 'alert-success');
+
             return redirect('/admins/products');
         }
 
@@ -39,6 +43,9 @@ class ProductsController extends Controller
         if(!is_null($product)){
             return view('admins/products/show')->with('product', $product);
         }else{
+            Session::flash('message', 'Category doesn\'t exist');
+            Session::flash('alert-class', 'alert-warning');
+
             return redirect('admins/products');
         }
     }
@@ -50,6 +57,9 @@ class ProductsController extends Controller
         if(!is_null($product)){
             return view('admins/products/edit')->with('data', ['product' => $product, 'categories' => $categories]);
         }else{
+            Session::flash('message', 'Category doesn\'t exist');
+            Session::flash('alert-class', 'alert-warning');
+
             return redirect('admins/products');
         }
     }
@@ -62,12 +72,26 @@ class ProductsController extends Controller
 
             if($product->save()){
                 $request->file('image')->storeAs('image', $request->file('image')->getClientOriginalName());
+                Session::flash('message', 'Update success this product');
+                Session::flash('alert-class', 'alert-success');
+
                 return redirect('admins/products/' . $product->id);
             }
         }else{
             return redirect('admins/products');
         }
 
+    }
+
+    public function ajax(Request $request){
+        $status = $request->status;
+        if($status == 2){
+            $products = Product::all();
+        }else{
+            $products = Product::where('status', $status)->get();
+        }
+
+        return $products;
     }
 
     private function get_infor_product(Product $product, ProductFormRequest $request){
@@ -82,7 +106,7 @@ class ProductsController extends Controller
         $product->color = $request->color;
         $product->warranty = $request->warranty;
         $product->condition = $request->condition;
-        $product->slug = $request->slug;
+        $product->slug = str_slug($request->name);
         $product->featured = $request->featured;
 
         return $product;

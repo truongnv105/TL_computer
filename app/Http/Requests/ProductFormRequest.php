@@ -25,7 +25,6 @@ class ProductFormRequest extends FormRequest
     {
         return [
             'name' => 'required|min:5',
-            'slug' => 'required|min:5',
             'category_id' => 'required',
             'price' => 'required|gt:10000|numeric',
             'image' => 'required|mimes:jpeg,png,gif,bmp,svg',
