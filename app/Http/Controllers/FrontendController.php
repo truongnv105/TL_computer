@@ -36,4 +36,13 @@ class FrontendController extends Controller
 
         return back();
     }
+
+    public function getSearch(Request $request){
+        $result = $request->result;
+        $data['keyword'] = $result;
+        $result = str_replace(' ', '%', $result);
+        $data['items'] = Product::where('name', 'like', '%'.$result.'%')->get();
+
+        return view('frontend.search', $data);
+    }
 }
