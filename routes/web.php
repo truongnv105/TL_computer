@@ -29,6 +29,8 @@ Route::prefix('admins')->group(function(){
     Route::put('/products/{id}', 'admins\ProductsController@update');
 });
 
+Route::get('/products/ajax', 'admins\ProductsController@ajax');
+
 Route::get('/', 'FrontendController@getHome');
 Route::get('details/{id}/{slug}.html', 'FrontendController@getDetails');
 Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
