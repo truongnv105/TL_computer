@@ -7,8 +7,8 @@
 							<div class="product-list row">
                             @foreach($featured as $item)
 								<div class="product-item col-md-3 col-sm-6 col-xs-12">
-									<a href="#"><img src="{{asset('/storage/image/' . $item->image)}}" class="img-thumbnail"></a>
-									<p><a href="#">{{$item->name}}}</a></p>
+									<a href="#"><img src="{{asset('storage/image/' . $item->image)}}" class="img-thumbnail"></a>
+									<p><a href="#">{{$item->name}}</a></p>
 									<p class="price">{{number_format($item->price,0,',','.')}}</p>
 									<div class="marsk">
                                     <a href="{{asset('details/'.$item->id.'/'.$item->slug.'.html')}}">Xem chi tiết</a>
@@ -24,7 +24,7 @@
                                 @foreach($new as $item)
 								<div class="product-item col-md-3 col-sm-6 col-xs-12">
 									<a href="#"><img src="{{asset('/storage/image/' . $item->image)}}" class="img-thumbnail"></a>
-									<p><a href="#">{{$item->name}}}</a></p>
+									<p><a href="#">{{$item->name}}</a></p>
 									<p class="price">{{number_format($item->price,0,',','.')}}</p>
 									<div class="marsk">
 										<a href="{{asset('details/'.$item->id.'/'.$item->slug.'.html')}}">Xem chi tiết</a>

@@ -14,19 +14,24 @@ class CategoryTableSeeder extends Seeder
     {
         $data = [
             [
-                'name'=>'iPhone'
+                'name'=>'iPhone',
+                'slug'=>str_slug('iPhone')
             ],
             [
-                'name'=>'SamSung'
+                'name'=>'SamSung',
+                'slug'=>str_slug('SamSung')
             ],
             [
-                'name'=>'Sony'
+                'name'=>'Sony',
+                'slug'=>str_slug('Sony')
             ],
             [
-                'name'=>'OPPO'
+                'name'=>'OPPO',
+                'slug'=>str_slug('OPPO')
             ],
             [
-                'name'=>'Xaomi'
+                'name'=>'Xaomi',
+                'slug'=>str_slug('Xaomi')
             ],
         ];
         DB::table('categories')->insert($data);

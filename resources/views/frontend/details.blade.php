@@ -10,7 +10,7 @@
 							<h3>{{$item->name}}</h3>
 							<div class="row">
 								<div id="product-img" class="col-xs-12 col-sm-12 col-md-3 text-center">
-									<img height="400px" src="{{asset('/storage/image/' . $item->image)}}">
+									<img height="200px" src="{{asset('/storage/image/' . $item->image)}}">
 								</div>
 								<div id="product-details" class="col-xs-12 col-sm-12 col-md-9">
 									<p>Giá: <span class="price">{{number_format($item->price,0,',','.')}}</span></p>
@@ -30,7 +30,7 @@
 						<div id="comment">
 							<h3>Bình luận</h3>
 							<div class="col-md-9 comment">
-								<form>
+								<form method="post">
 									<div class="form-group">
 										<label for="email">Email:</label>
 										<input required type="email" class="form-control" id="email" name="email">
@@ -45,41 +45,28 @@
 									</div>
 									<div class="form-group text-right">
 										<button type="submit" class="btn btn-default">Gửi</button>
-									</div>
+                                    </div>
+                                    {{csrf_field()}}
 								</form>
 							</div>
-						</div>
+                        </div>
+
+
+
 						<div id="comment-list">
+                            @foreach($comments as $comment)
 							<ul>
 								<li class="com-title">
-									Vietpro Education
+									{{$comment->com_name}}
 									<br>
-									<span>2017-19-01 10:00:00</span>
+									<span>{{date('d/m/Y H:i',strtotime($comment->created_at))}}</span>
 								</li>
 								<li class="com-details">
-									HTC One X 32GB là sản phẩm đáng chờ đợi nhất trong năm nay, với cấu hình mạnh và giá thành tương đối mềm so với các dòng Smart Phone của các hãng khác
+									{{$comment->com_content}}
 								</li>
 							</ul>
-							<ul>
-								<li class="com-title">
-									Vietpro Education
-									<br>
-									<span>2017-19-01 10:00:00</span>
-								</li>
-								<li class="com-details">
-									HTC One X 32GB là sản phẩm đáng chờ đợi nhất trong năm nay, với cấu hình mạnh và giá thành tương đối mềm so với các dòng Smart Phone của các hãng khác
-								</li>
-							</ul>
-							<ul>
-								<li class="com-title">
-									Vietpro Education
-									<br>
-									<span>2017-19-01 10:00:00</span>
-								</li>
-								<li class="com-details">
-									HTC One X 32GB là sản phẩm đáng chờ đợi nhất trong năm nay, với cấu hình mạnh và giá thành tương đối mềm so với các dòng Smart Phone của các hãng khác
-								</li>
-							</ul>
+						@endforeach
+
 						</div>
 					</div>
 					<!-- end main -->

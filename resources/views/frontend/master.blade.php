@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<base href="{{asset('../public/layout/frontend')}}/ ">
+<base href="{{asset('layout/frontend')}}/ ">
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -190,7 +190,7 @@
 					</div>
 				</div>
 				<div id="scroll">
-					<a href="#"><img src="img/home/scroll.png"></a>
+					<a href="{{asset( '/' )}}"><img src="img/home/scroll.png"></a>
 				</div>
 			</div>
 		</div>

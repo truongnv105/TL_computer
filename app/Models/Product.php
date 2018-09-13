@@ -14,6 +14,10 @@ class Product extends Model
         return $this->belongsTo('App\Models\Category');
     }
 
+    public function comment(){
+        return $this->hasMany('App\Models\Comment');
+    }
+
     protected $guarded = [];
 
 
