@@ -33,3 +33,4 @@ Route::get('/', 'FrontendController@getHome');
 Route::get('details/{id}/{slug}.html', 'FrontendController@getDetails');
 Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
 Route::post('details/{id}/{slug}.html', 'FrontendController@postComment');
+Route::get('search', 'FrontendController@getSearch');

@@ -12,6 +12,16 @@ body{
 }
 
 
+
+.navbar-form {
+    margin-top: 25px;
+
+
+}
+.input[type=text] {
+    width: 200px;
+}
+
 #logo, #search, #cart{
 	height: 98px;
 }
@@ -40,12 +50,7 @@ body{
 	color: #ff9600;
 	font-size: 12px;
 }
-@media (min-width: 768px) {
-	.navbar-form .input-group .form-control,
-	.navbar-form .input-group .input-group-btn{
-		width: 100%;
-	}
-}
+
 #cart{
 	background: url('../img/home/cart.png') no-repeat center;
 	color: #fff;
