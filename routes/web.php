@@ -36,3 +36,14 @@ Route::get('details/{id}/{slug}.html', 'FrontendController@getDetails');
 Route::get('category/{id}/{slug}.html', 'FrontendController@getCategory');
 Route::post('details/{id}/{slug}.html', 'FrontendController@postComment');
 Route::get('search', 'FrontendController@getSearch');
+
+Route::group(['prefix'=>'cart'], function(){
+    Route::get('add/{id}', 'CartController@getAddCart');
+    Route::get('show', 'CartController@getShowCart');
+    Route::post('show', 'CartController@postShowCart');
+    Route::get('delete/{id}', 'CartController@getDeleteCart');
+    Route::get('update','CartController@getUpdateCart');
+
+});
+
+Route::get('complete','CartController@getComplete');

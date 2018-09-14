@@ -19,7 +19,7 @@
 									<p>Tình trạng: {{$item->condition}}</p>
 									<p>Khuyến mại: {{$item->promotion}}%</p>
 									<p>Còn hàng: @if($item->status==1) Còn Hàng @else Hết Hàng @endif</p>
-									<p class="add-cart text-center"><a href="#">Đặt hàng online</a></p>
+									<p class="add-cart text-center"><a href="{{asset('cart/add/'.$item->id)}}">Đặt hàng online</a></p>
 								</div>
 							</div>
 						</div>
