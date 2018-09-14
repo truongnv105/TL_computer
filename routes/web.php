@@ -27,6 +27,9 @@ Route::prefix('admins')->group(function(){
     Route::get('/products/{id}', 'admins\ProductsController@show');
     Route::get('/products/{id}/edit', 'admins\ProductsController@edit');
     Route::put('/products/{id}', 'admins\ProductsController@update');
+
+    Route::get('/comments', 'admins\CommentsController@index');
+    Route::delete('/comments/{id}', 'admins\CommentsController@destroy');
 });
 
 Route::get('/products/ajax', 'admins\ProductsController@ajax');

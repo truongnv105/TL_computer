@@ -39,9 +39,10 @@ class ProductsController extends Controller
 
     public function show($id){
         $product = Product::find($id);
+        $categories = Category::pluck("name", "id");
 
         if(!is_null($product)){
-            return view('admins/products/show')->with('product', $product);
+            return view('admins/products/show')->with('product', $product)->with("categories", $categories);
         }else{
             Session::flash('message', 'Category doesn\'t exist');
             Session::flash('alert-class', 'alert-warning');

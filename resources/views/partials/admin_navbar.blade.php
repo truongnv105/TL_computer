@@ -24,7 +24,7 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="tables.html">
+          <a class="nav-link" href="{{ url('/admins/comments') }}">
             <i class="fa fa-commenting"></i>
             <span class="nav-link-text">Comments</span>
           </a>

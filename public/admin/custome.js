@@ -42,10 +42,7 @@ $(document).ready(function(){
 
         }
         $(".table").append("</table>");
-      },
-      error: function(data){
-        alert("fail");
-    }
+      }
     });
   });
 
@@ -62,10 +59,47 @@ $(document).ready(function(){
     var category_name = $(this).nextAll("input#category_name").val();
     $("#modal-category").find("input#name").val(category_name);
     $("#edit-category").click();
-    $("#button-update-category").click(function(){
-    $("form#form-edit").attr('action', '/admins/categories/');
-    $("form#form-edit").attr('method', 'post');
+    var url = "/admins/categories/" + category_id;
+    $("form#edit-category").attr("action", url);
+  });
 
+  $(".edit-product").click(function(){
+    var product_id = $("table.products").find("input#product_id").val();
+    var product_name = $("table.products").find("input#product_name").val();
+    var category_id = $("table.products").find("input#category_id").val();
+    var product_color = $("table.products").find("input#product_color").val();
+    var product_price = $("table.products").find("input#product_price").val();
+    var product_status = $("table.products").find("input#product_status").val();
+    var product_item = $("table.products").find("input#product_item").val();
+    var product_promotion = $("table.products").find("input#product_promotion").val();
+    var product_condition = $("table.products").find("input#product_condition").val();
+    var product_warranty = $("table.products").find("input#product_warranty").val();
+    var product_featured = $("table.products").find("input#product_featured").val();
+    var product_description = $("table.products").find("input#product_description").val();
+    var url = "/admins/products/" + product_id;
+    var option_category = $("select#category_id").find("option");
+    option_category.each(function(){
+      if($(this).val() == category_id){
+        $(this).attr("selected", "true");
+      };
     });
+    var status = $("input[type='radio']");
+    status.each(function(){
+      if($(this).val() == product_status){
+        $(this).val(product_status);
+        $(this).attr("checked", "true");
+      }
+    })
+
+    $("form#product-form").find("input#name").val(product_name);
+    $("form#product-form").find("input#price").val(product_price);
+    $("form#product-form").find("input#promotion").val(product_promotion);
+    $("form#product-form").find("textarea#description").val(product_description);
+    $("form#product-form").find("input#item").val(product_item);
+    $("form#product-form").find("input#warranty").val(product_warranty);
+    $("form#product-form").find("input#featured").val(product_featured);
+    $("form#product-form").find("input#condition").val(product_condition);
+    $("form#product-form").find("input#color").val(product_color);
+    $("form#product-form").attr("action", url);
   });
 });
