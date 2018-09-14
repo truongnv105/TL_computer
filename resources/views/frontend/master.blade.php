@@ -6,7 +6,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>TL Shop - @yield('title')</title>
-
+    <link rel="icon" type="image/png" sizes="32x32" href="img/home/favicon.jpg">
 	<link rel="stylesheet" href="css/bootstrap.min.css">
 	<link rel="stylesheet" href="css/home.css">
 	<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
@@ -40,7 +40,7 @@
 			<div class="row">
 				<div id="logo" class="col-md-3 col-sm-12 col-xs-12">
 					<h1>
-						<a href="{{asset( '/' )}}"><img src=""></a>
+						<a href="{{asset( '/' )}}"><img src="img/home/logo1.png" style="width: 178px; height: 100px;"></a>
 						<nav><a id="pull" class="btn btn-danger" href="#">
 							<i class="fa fa-bars"></i>
 						</a></nav>
@@ -51,7 +51,7 @@
                         <form class="navbar-form" role="search" method="get" action="{{asset('search/')}}">
                             <div class="input-group">
                                 <div class="input-group-btn">
-                                    <input type="text" name="result" placeholder="Nhập từ khóa ..." class="form-control">
+                                    <input type="text" name="result" placeholder="Nhập từ khóa ..." class="form-control" style="width:230px">
                                 </div>
 
                                 <div class="input-group-btn">
@@ -62,8 +62,8 @@
 				    </div>
                 </div>
 				<div id="cart" class="col-md-2 col-sm-12 col-xs-12">
-					<a class="display" href="#">Giỏ hàng</a>
-					<a href="#">6</a>
+					<a class="display" href="{{asset('cart/show')}}">Giỏ hàng</a>
+					<a href="{{asset('cart/show')}}">{{Cart::getTotalQuantity()}}</a>
 				</div>
 			</div>
 		</div>
@@ -171,7 +171,7 @@
 			<div class="container">
 				<div class="row">
 					<div id="logo-f" class="col-md-3 col-sm-12 col-xs-12 text-center">
-						<a href="#"><img src="img/home/logo.png"></a>
+						<a href="{{asset( '/' )}}"><img src="img/home/logo1.png" style="width: 178px; height: 100px;"></a>
 					</div>
 					<div id="about" class="col-md-3 col-sm-12 col-xs-12">
 						<h3>About us</h3>

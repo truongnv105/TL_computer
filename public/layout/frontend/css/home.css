@@ -18,9 +18,7 @@ body{
 
 
 }
-.input[type=text] {
-    width: 200px;
-}
+
 
 #logo, #search, #cart{
 	height: 98px;
