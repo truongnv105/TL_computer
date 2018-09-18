@@ -12,24 +12,28 @@
 */
 
 Route::prefix('admins')->group(function(){
-    Route::get('/dashboards', 'admins\DashboardsController@index');
+    Route::get('/dashboards', 'admins\DashboardsController@index')->middleware('auth')->name('admin.dashboards');
 
-    Route::get('/categories', 'admins\CategoriesController@index');
-    Route::get('/categories/create', 'admins\CategoriesController@create');
-    Route::post('/categories', 'admins\CategoriesController@store');
-    Route::get('/categories/{id}', 'admins\CategoriesController@show');
-    Route::get('/categories/{id}/edit', 'admins\CategoriesController@edit');
-    Route::put('/categories/{id}', 'admins\CategoriesController@update');
+    Route::get('/categories', 'admins\CategoriesController@index')->middleware('auth')->name('admin.categories');
+    Route::get('/categories/create', 'admins\CategoriesController@create')->middleware('auth');
+    Route::post('/categories', 'admins\CategoriesController@store')->middleware('auth');
+    Route::get('/categories/{id}', 'admins\CategoriesController@show')->middleware('auth');
+    Route::get('/categories/{id}/edit', 'admins\CategoriesController@edit')->middleware('auth');
+    Route::put('/categories/{id}', 'admins\CategoriesController@update')->middleware('auth');
+    Route::delete('/categories/{id}', 'admins\CategoriesController@destroy');
 
-    Route::get('/products', 'admins\ProductsController@index');
-    Route::get('/products/create', 'admins\ProductsController@create');
-    Route::post('/products', 'admins\ProductsController@store');
+    Route::get('/products', 'admins\ProductsController@index')->middleware('auth')->name('admin.products');
+    Route::get('/products/create', 'admins\ProductsController@create')->middleware('auth');
+    Route::post('/products', 'admins\ProductsController@store')->middleware('auth');
     Route::get('/products/{id}', 'admins\ProductsController@show');
-    Route::get('/products/{id}/edit', 'admins\ProductsController@edit');
-    Route::put('/products/{id}', 'admins\ProductsController@update');
+    Route::get('/products/{id}/edit', 'admins\ProductsController@edit')->middleware('auth');
+    Route::put('/products/{id}', 'admins\ProductsController@update')->middleware('auth');
+    Route::delete('/products/{id}', 'admins\ProductsController@destroy')->middleware('can:delete, product');
 
-    Route::get('/comments', 'admins\CommentsController@index');
-    Route::delete('/comments/{id}', 'admins\CommentsController@destroy');
+    Route::get('/comments', 'admins\CommentsController@index')->middleware('auth')->name('admin.comments');
+    Route::delete('/comments/{id}', 'admins\CommentsController@destroy')->middleware('auth');
+
+    Auth::routes();
 });
 
 Route::get('/products/ajax', 'admins\ProductsController@ajax');

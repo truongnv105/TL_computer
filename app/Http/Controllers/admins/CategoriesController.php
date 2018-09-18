@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Http\Requests\CategoryFormRequest;
 use Illuminate\Support\Facades\Session;
+use App\Policies\CategoryPolicy;
 
 class CategoriesController extends Controller
 {
@@ -76,6 +77,16 @@ class CategoriesController extends Controller
 
             return redirect('admins/categories');
         }
+    }
+
+    public function destroy($id){
+        $category = Category::find($id);
+        $category->delete();
+
+        Session::flash('message', 'Deleted success category: ' . $category->name);
+        Session::flash('alert-class', 'alert-success');
+
+        return redirect('admins/categories');
     }
 
     private function get_infor_category(Category $category, CategoryFormRequest $request){

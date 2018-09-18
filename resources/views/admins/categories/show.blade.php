@@ -5,7 +5,7 @@
 @stop
 
 @section ('body.resource')
-    {{ $data['category']->name }}
+   <a href="{{ route('admin.categories') }}">Categories / </a> {{ $data['category']->name }}
 @stop
 
 @section ('body.content')

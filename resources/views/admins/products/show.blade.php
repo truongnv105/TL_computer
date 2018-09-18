@@ -5,7 +5,7 @@
 @stop
 
 @section ('body.resource')
-    {{ $product->category()->value('name') }} / {{ $product->name }}
+    <a href="{{ route('admin.categories') }}">{{ $product->category()->value('name') }}</a> / {{ $product->name }}
 @stop
 
 @section ('body.content')

@@ -85,6 +85,7 @@ class ProductsController extends Controller
     }
 
     public function ajax(Request $request){
+        $categories = Category::all();
         $status = $request->status;
         if($status == 2){
             $products = Product::all();
@@ -92,7 +93,8 @@ class ProductsController extends Controller
             $products = Product::where('status', $status)->get();
         }
 
-        return $products;
+        $data = array('categories' => $categories, 'products' => $products);
+        return $data;
     }
 
     private function get_infor_product(Product $product, ProductFormRequest $request){

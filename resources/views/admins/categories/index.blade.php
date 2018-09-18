@@ -15,12 +15,13 @@
                 <p class="alert {{ Session::get('alert-class') }}">{{ Session::get('message') }}</p>
             @endif
         </div>
+        @can('categories.create', Category::Class)
         <div class="col-md-3 form-group">
             <button class="btn btn-primary form-control creat-category" data-target="#modal-category-new"
                 data-toggle="modal">Create new category</button>
         </div>
+        @endcan
     </div>
-
 
     <table class="table table-condensed">
         <tr>
@@ -40,15 +41,16 @@
                     <input type="hidden" id="category_name" value="{{ $category->name }}">
                 </td>
                 <td><a href="{{ url('/admins/categories/' . $category->id) }}"><i class="fa fa-eye"></i></a></td>
-                <td>
-                    <i class="fa fa-trash category"></i>
-                    <div class="hidden" style="display: none;">
+                @can('categories.before')
+                    <td>
+                        <div class="hidden">
 
-                    {!! Form::open(array('url' => '/admins/categories/' . $category->id, 'method' => 'delete')) !!}
-                        {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
-                    {!! Form::close() !!}
-                    </div>
-                </td>
+                        {!! Form::open(array('url' => '/admins/categories/' . $category->id, 'method' => 'delete')) !!}
+                            {!! Form::submit('Delete', array('class' => 'btn btn-danger')) !!}
+                        {!! Form::close() !!}
+                        </div>
+                    </td>
+                @endcan
             </tr>
         @endforeach
     </table>

@@ -14,7 +14,10 @@ $(document).ready(function(){
       data: {status: status_product},
 
       success: function(response){
-        var quantity_product = Object.keys(response).length;
+        console.log(response);
+        var quantity_products = Object.keys(response['products']).length;
+        var quantity_categories = Object.keys(response['categories']).length;
+
         $(".table").remove();
         $(".filter").after("<table class='table'>");
         $('.table').append("<tr>");
@@ -28,16 +31,22 @@ $(document).ready(function(){
         $('.table').append("<th>" + "Status" + "</th>");
         $('.table').append("</tr>");
 
-        for(var i=0; i<quantity_product; i++){
+        for(var i=0; i<quantity_products; i++){
           $('.table').append("<tr>");
-          $('.table').append("<td>"  + response[i]['id'] + "</td>");
-          $('.table').append("<td>" + '<a href="/admins/products/' + response[i]['id'] + '"' + "</a>" + response[i]['name'] + "</td>");
-          $('.table').append("<td>" + response[i]['category_id'] + "</td>");
-          $('.table').append("<td>" + response[i]['price'] + "</td>");
-          $('.table').append("<td>" + '<img src="http://127.0.0.1:8000/storage/image/' + response[i]['image'] + '" with="60" height="60"/>' + "</td>");
-          $('.table').append("<td>" + response[i]['promotion'] + "%" + "</td>");
-          $('.table').append("<td>" + response[i]['description'].substr(0,35) + "</td>")
-          $('.table').append("<td>" + check_status(response[i]['status']) + "</td>");
+          $('.table').append("<td>"  + response['products'][i]['id'] + "</td>");
+          $('.table').append("<td>" + '<a href="/admins/products/' + response['products'][i]['id'] + '"' + "</a>" + response['products'][i]['name'] + "</td>");
+
+          for(var j=0; j<quantity_categories; j++){
+            if(response['products'][i]['category_id'] == response['categories'][j]['id']){
+              $('.table').append("<td>" + response['categories'][j]['name'] + "</td>");
+            }
+          }
+
+          $('.table').append("<td>" + response['products'][i]['price'] + "</td>");
+          $('.table').append("<td>" + '<img src="http://127.0.0.1:8000/storage/image/' + response['products'][i]['image'] + '" with="60" height="60"/>' + "</td>");
+          $('.table').append("<td>" + response['products'][i]['promotion'] + "%" + "</td>");
+          $('.table').append("<td>" + response['products'][i]['description'].substr(0,35) + "</td>")
+          $('.table').append("<td>" + check_status(response['products'][i]['status']) + "</td>");
           $('.table').append("</tr>");
 
         }
