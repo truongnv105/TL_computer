@@ -12,19 +12,19 @@
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-          <a class="nav-link" href="{{ url('/admins/categories') }}">
+          <a class="nav-link" href="{{ route('admin.categories') }}">
             <i class="fa fa-fw fa-area-chart"></i>
             <span class="nav-link-text">Categories</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="{{ url('/admins/products') }}">
+          <a class="nav-link" href="{{ route('admin.products') }}">
             <i class="fa fa-fw fa-table"></i>
             <span class="nav-link-text">Products</span>
           </a>
         </li>
         <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-          <a class="nav-link" href="{{ url('/admins/comments') }}">
+          <a class="nav-link" href="{{ route('admin.comments') }}">
             <i class="fa fa-commenting"></i>
             <span class="nav-link-text">Comments</span>
           </a>

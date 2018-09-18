@@ -41,9 +41,9 @@
 								</table>
 								<div class="row" id="total-price">
 									<div class="col-md-6 col-sm-12 col-xs-12">
-											Tổng thanh toán: <span class="total-price">{{number_format($total,0,',','.')}}</span>
+                      Tổng thanh toán: <span class="total-price">{{number_format($total,0,',','.')}}</span>
 
-									</div>
+                  </div>
 									<div class="col-md-6 col-sm-12 col-xs-12">
 										<a href="{{asset('/')}}" class="my-btn btn">Mua tiếp</a>
 										<a href="#" class="my-btn btn">Cập nhật</a>

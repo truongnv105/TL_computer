@@ -1,4 +1,4 @@
-{!! Form::open(array('url' => '/admins/products', 'method' => 'put', 'files' => 'true', 'id' => "product-form")) !!}
+{!! Form::open(array('url' => '/admins/products', 'method' => 'post', 'files' => 'true', 'id' => "product-form")) !!}
 
     @if ($errors->any())
         <div class="form-group alert alert-danger">
