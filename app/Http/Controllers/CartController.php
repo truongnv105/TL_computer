@@ -48,8 +48,8 @@ class CartController extends Controller
     }
 
     public function getShowCart(){
-        $data['items'] = Cart::getContent();
         $data['total'] = Cart::getTotal();
+        $data['items'] = Cart::getContent();
         return view('frontend.cart', $data);
     }
 
@@ -63,13 +63,13 @@ class CartController extends Controller
          return back();
     }
 
-    public function getUpdateCart(Request $request){
-         Cart::update($id, array(
+    public function getUpdateCart(Request $request,$id){
+        Cart::update($id, array(
             'quantity' => array(
                 'relative' => false,
-                'value' => quantity
+                'value' => $request->input('quantity'),
             ),
-        ));
+          ));
 
     }
 
