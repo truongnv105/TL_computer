@@ -1,8 +1,7 @@
 @extends('frontend.master')
 @section('title', 'Danh Mục Sản Phẩm')
-
-<link rel="stylesheet" href="css/category.css">
 @section('content')
+<link rel="stylesheet" href="css/category.css">
 					<div id="wrap-inner">
 						<div class="products">
 							<h3>{{$catename->name}}</h3>

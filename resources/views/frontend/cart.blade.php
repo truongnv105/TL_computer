@@ -1,15 +1,8 @@
 @extends('frontend.master')
 @section('title', 'Giỏ Hàng')
 @section('content')
+
     <link rel="stylesheet" href="css/cart.css">
-    <script type="text/javascript">
-        function updateCart(quantity, id){
-            $.get('{{asset('cart/update')}}', {quantity:quantity, id:id}, function(){
-                location.reload();
-            }
-            );
-        }
-    </script>
 	<div id="wrap-inner">
 		<div id="list-cart">
             <h3>Giỏ hàng</h3>
@@ -29,8 +22,8 @@
 						<td><img height="150px" class="img-responsive" src="{{asset('/storage/image/'.$item->attributes->img)}}"></td>
 						<td>{{$item->name}}</td>
 						<td class="form-group">
-                            <input class="form-control" id="quantity" type="number" value="{{$item->quantity}}">
-                            <input type="hidden" id="product_id" name="product_id" value="{{ $item->id }}" />
+                            <input class="form-control" id="quantity" type="number" value="{{$item->quantity}}" onchange="updateCart(this.value, '{{$item->id}}')">
+                            <input type="hidden" id="product_id" name="product_id" value="{{ $item->id }}">
 						</td>
 						<td><span class="price">{{number_format($item->price,0,',','.')}}</span></td>
 						<td class="total-product"><span class="price">{{number_format($item->price*$item->quantity,0,',','.')}}</span></td>
@@ -44,7 +37,6 @@
                     </div>
 					<div class="col-md-6 col-sm-12 col-xs-12">
 						<a href="{{asset('/')}}" class="my-btn btn">Mua tiếp</a>
-						<a href="#" class="my-btn btn">Cập nhật</a>
 						<a href="{{asset('cart/delete/all')}}" class="my-btn btn">Xóa giỏ hàng</a>
 					</div>
 				</div>
@@ -81,4 +73,3 @@
             @endif
 	</div>
 @endsection
-

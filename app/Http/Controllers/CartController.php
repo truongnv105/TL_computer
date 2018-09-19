@@ -36,11 +36,11 @@ class CartController extends Controller
             }
             if($tmp==0){
                 $data = array('id'=> $product->id, "quantity" => 1, "name" => $product->name);
-                session()->push("products", $data);
+                session()->push('products', $data);
             }
         }else{
             $data = array('id'=> $product->id, "quantity" => 1, "name" => $product->name);
-            session()->push("products", $data);
+            session()->push('products', $data);
         }
 
         Cart::add($item);
@@ -48,8 +48,8 @@ class CartController extends Controller
     }
 
     public function getShowCart(){
-        $data['items'] = Cart::getContent();
         $data['total'] = Cart::getTotal();
+        $data['items'] = Cart::getContent();
         return view('frontend.cart', $data);
     }
 
@@ -64,12 +64,12 @@ class CartController extends Controller
     }
 
     public function getUpdateCart(Request $request){
-         Cart::update($id, array(
+        Cart::update($request->id, array(
             'quantity' => array(
                 'relative' => false,
-                'value' => quantity
+                'value' => $request->input('quantity'),
             ),
-        ));
+          ));
 
     }
 
