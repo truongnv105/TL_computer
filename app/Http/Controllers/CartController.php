@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Cart;
 use App\Models\Product;
 use Mail;
+session()->put('total-cart');
+
 
 class CartController extends Controller
 {
@@ -17,9 +19,31 @@ class CartController extends Controller
             'price' => $product->price,
             'quantity' => 1,
             'attributes' => array('img' => $product->image));
+        $total = session()->get('total-cart');
+        session()->put('total-cart',$total + $product->price * 1);
+
+        if(session()->has('products')){
+            $tmp = 0;
+            foreach(session()->get('products') as $key => $product_cart){
+                if($product_cart['id'] == $product->id){
+                    $quantity = $product_cart['quantity'] + 1;
+                    session()->forget('products.' . $key);
+                    $data = array('id'=> $product->id, "quantity" => $quantity, "name" => $product->name);
+                    session()->push('products', $data);
+                    $tmp = 1;
+                    break;
+                }
+            }
+            if($tmp==0){
+                $data = array('id'=> $product->id, "quantity" => 1, "name" => $product->name);
+                session()->push("products", $data);
+            }
+        }else{
+            $data = array('id'=> $product->id, "quantity" => 1, "name" => $product->name);
+            session()->push("products", $data);
+        }
 
         Cart::add($item);
-
         return redirect('cart/show');
     }
 

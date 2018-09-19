@@ -97,6 +97,27 @@ class ProductsController extends Controller
         return $data;
     }
 
+    public function get_price(Request $request){
+        $price = Product::find($request->id)->price;
+        $chenh = 0;
+        $quan = 0;
+        foreach(session()->get('products') as $key => $product_cart){
+            if($product_cart['id'] == $request->id){
+                $chenh = $request->quantity - $product_cart['quantity'];
+                session()->put('products.' . $key . ".quantity", $request->quantity);
+                $quan = session()->get('products.' . $key . ".quantity");
+                break;
+            }
+        }
+        $total_cart = session()->get('total-cart');
+        $total_cart = $total_cart + $chenh*$price;
+        session()->put('total-cart', $total_cart);
+        $total_product = number_format($request->quantity * $price,0,',','.');
+        $total_cart = number_format($total_cart,0,',','.');
+        $data = array('total-product' => $total_product, 'total-cart' => $total_cart, 'quantity' => $quan);
+        return $data;
+    }
+
     private function get_infor_product(Product $product, ProductFormRequest $request){
         $product->name = $request->name;
         $product->category_id = $request->category_id;

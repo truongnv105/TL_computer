@@ -37,6 +37,7 @@ Route::prefix('admins')->group(function(){
 });
 
 Route::get('/products/ajax', 'admins\ProductsController@ajax');
+Route::get('products/get_price', 'admins\ProductsController@get_price');
 
 Route::get('/', 'FrontendController@getHome');
 Route::get('details/{id}/{slug}.html', 'FrontendController@getDetails');
