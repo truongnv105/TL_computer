@@ -36,11 +36,11 @@ class CartController extends Controller
             }
             if($tmp==0){
                 $data = array('id'=> $product->id, "quantity" => 1, "name" => $product->name);
-                session()->push("products", $data);
+                session()->push('products', $data);
             }
         }else{
             $data = array('id'=> $product->id, "quantity" => 1, "name" => $product->name);
-            session()->push("products", $data);
+            session()->push('products', $data);
         }
 
         Cart::add($item);
@@ -63,8 +63,8 @@ class CartController extends Controller
          return back();
     }
 
-    public function getUpdateCart(Request $request,$id){
-        Cart::update($id, array(
+    public function getUpdateCart(Request $request){
+        Cart::update($request->id, array(
             'quantity' => array(
                 'relative' => false,
                 'value' => $request->input('quantity'),

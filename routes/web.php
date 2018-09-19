@@ -50,7 +50,7 @@ Route::group(['prefix'=>'cart'], function(){
     Route::get('show', 'CartController@getShowCart');
     Route::post('show', 'CartController@postShowCart');
     Route::get('delete/{id}', 'CartController@getDeleteCart');
-    Route::get('update/{id}','CartController@getUpdateCart');
+    Route::get('update','CartController@getUpdateCart');
 
 });
 

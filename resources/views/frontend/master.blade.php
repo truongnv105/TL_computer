@@ -30,28 +30,17 @@
 			if(w > 320 && menu.is(':hidden')) {
 				menu.removeAttr('style');
 			}
-		});
+        });
 
-		$(document).on("change", "input#quantity", function(){
-			var product_id = $(this).next("input").val();
-			var qty = $(this).val();
-			var tdElement = $(this).parent();
-			var tdTotalPrice = tdElement.nextAll("td.total-product");
-
-			$.ajax({
-				url: "/products/get_price",
-				method: "get",
-				data: {id: product_id, quantity: qty},
-				success: function(response){
-					tdTotalPrice.children("span").text(response['total-product']);
-					$("span.total-cart").text(response['total-cart']);
-				},
-				error: function(response){
-					console.log(response)
-					alert("Cannot get product's price");
-				}
-			});
-		})
+        function updateCart(quantity, id){
+            $.get(
+                '{{asset('cart/update')}}',
+                {quantity:quantity, id:id},
+                function(){
+                    location.reload();
+                }
+            );
+        }
 	</script>
 </head>
 <body>
