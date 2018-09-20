@@ -27,7 +27,7 @@
                 <td>{{ $product->id }}</td>
                 <td><a href="{{ url('admins/products/' . $product->id) }}">{{ $product->name }}</a></td>
                 <td>{{ $product->category->value('name') }}</td>
-                <td>{{ money_format('%.2n', $product->price) }}</td>
+                <td>{{  $product->price }}</td>
                 <td><img src="{{ asset('storage/image/' . $product->image) }}" width="60" height="60"/></td>
                 <td>{{ $product->promotion }}%</td>
                 <td>{{ substr($product->description, 0, 65) }}</td>

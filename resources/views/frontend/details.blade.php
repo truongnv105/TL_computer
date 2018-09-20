@@ -2,9 +2,7 @@
 @section('title', 'Chi Tiết Sản Phẩm')
 @section('content')
 	<link rel="stylesheet" href="css/details.css">
-
 					<div id="wrap-inner">
-
 						<div id="product-info">
 							<div class="clearfix"></div>
 							<h3>{{$item->name}}</h3>

@@ -21,11 +21,7 @@
 							</div>
 						</div>
 
-						<div id="pagination">
-							<ul class="pagination pagination-lg justify-content-center">
 
-							</ul>
-						</div>
 					</div>
 
 
