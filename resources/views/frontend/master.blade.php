@@ -210,9 +210,6 @@
 						</div>
 					</div>
 				</div>
-				<div id="scroll">
-					<a href="{{asset( '/' )}}"><img src="img/home/scroll.png"></a>
-				</div>
 			</div>
 		</div>
 	</footer>

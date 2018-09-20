@@ -23,7 +23,6 @@
 						<td>{{$item->name}}</td>
 						<td class="form-group">
                             <input class="form-control" id="quantity" type="number" value="{{$item->quantity}}" onchange="updateCart(this.value, '{{$item->id}}')">
-                            <input type="hidden" id="product_id" name="product_id" value="{{ $item->id }}">
 						</td>
 						<td><span class="price">{{number_format($item->price,0,',','.')}}</span></td>
 						<td class="total-product"><span class="price">{{number_format($item->price*$item->quantity,0,',','.')}}</span></td>
